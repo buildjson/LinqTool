@@ -1,35 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LINQ Visual Builder</title>
+    <title>Free Online LINQ Query Builder & JSON Formatter</title>
+    <meta name="description" content="Free developer toolkit with LINQ visual query builder and JSON formatter. Filter, sort, select and generate C# LINQ code online.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>LINQ Visual Query Builder</h1>
+<h1>Developer Toolkit</h1>
 
-    <h3>Paste JSON Data</h3>    
+<div class="nav-bar">
+    <button class="tab-btn active" onclick="showTab('linqTab', this)">LINQ Builder</button>
+    <button class="tab-btn" onclick="showTab('jsonTab', this)">JSON Formatter</button>
+</div>
+
+<!-- ================= LINQ TAB ================= -->
+
+<div id="linqTab" class="tab-content">
+
+    <h2>LINQ Visual Query Builder</h2>
+
+    <h3>Paste JSON Data</h3>
     <textarea id="jsonInput" rows="8"></textarea>
     <button onclick="loadData()">Load Data</button>
 
-    <div id="filterSection" style="display:none;">
+    <div id="linqSection" style="display:none;">
+
         <h3>Filter</h3>
         <select id="fieldSelect"></select>
+
         <select id="operatorSelect">
             <option value=">">></option>
             <option value="<"><</option>
             <option value="==">==</option>
         </select>
+
         <input type="text" id="valueInput" placeholder="Value">
-        <button onclick="applyFilter()">Apply Filter</button>
+
+        <h3>Order By</h3>
+        <select id="orderFieldSelect">
+            <option value="">-- None --</option>
+        </select>
+
+        <select id="orderDirectionSelect">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+
+        <h3>Select Fields</h3>
+        <div id="selectFields"></div>
+
+        <button onclick="applyFilter()">Run Query</button>
+
+        <h3>Result</h3>
+        <pre id="resultOutput"></pre>
+
+        <h3>Generated C# LINQ Code</h3>
+        <pre id="linqOutput"></pre>
+
+    </div>
+</div>
+
+<!-- ================= JSON TAB ================= -->
+
+<div id="jsonTab" class="tab-content" style="display:none;">
+
+    <h2>JSON Formatter & Validator</h2>
+
+    <div class="json-wrapper">
+
+        <div class="json-panel">
+            <h3>Input</h3>
+            <textarea id="jsonInputArea" placeholder="Paste JSON here..."></textarea>
+        </div>
+
+        <div class="json-panel">
+            <h3>Output</h3>
+            <pre id="jsonOutputArea"></pre>
+        </div>
+
     </div>
 
-    <h3>Result</h3>
-    <pre id="resultOutput"></pre>
+    <div class="json-actions">
+        <button onclick="formatJSON()">Format</button>
+        <button onclick="minifyJSON()">Minify</button>
+        <button onclick="validateJSON()">Validate</button>
+        <button onclick="copyOutput()">Copy</button>
+        <button onclick="downloadJSON()">Download</button>
+        <button onclick="clearJSON()">Clear</button>
+    </div>
 
-    <h3>Generated C# LINQ Code</h3>
-    <pre id="linqOutput"></pre>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
