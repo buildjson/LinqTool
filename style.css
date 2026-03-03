@@ -97,3 +97,10 @@ pre {
 * {
     box-sizing: border-box;
 }
+.site-header {
+    margin-bottom: 30px;
+}
+.site-header p {
+    color: #aaa;
+    margin-top: 5px;
+}
